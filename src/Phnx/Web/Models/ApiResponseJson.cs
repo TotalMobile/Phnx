@@ -24,18 +24,17 @@ namespace Phnx.Web.Models
         /// </summary>
         /// <exception cref="InvalidOperationException">The response, or the body of the response was <see langword="null"/>, or the body of the response was empty</exception>
         /// <exception cref="JsonException">The API response or content is not valid JSON</exception>
-        public async Task<T> GetBodyAsync()
-        {
-            if (Message?.Content is null)
+        public async Task<T> GetBodyAsync() {
+            if (Message is null)
             {
-                throw new InvalidOperationException($"Cannot load a null response body as JSON");
+                throw new InvalidOperationException($"{nameof(Message)} cannot be null");
             }
 
             var contentStream = await Message.Content.ReadAsStreamAsync();
 
             if (contentStream is null || contentStream.Length == 0)
             {
-                throw new InvalidOperationException($"Cannot load an empty response body as JSON");
+                throw new InvalidOperationException("Cannot load an empty response body as JSON");
             }
 
             var content = await JsonSerializer.DeserializeAsync<T>(contentStream);
