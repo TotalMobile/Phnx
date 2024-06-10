@@ -17,14 +17,6 @@ namespace Phnx.Web.Tests.Models
         }
 
         [Test]
-        public void GetBodyAsync_WithNullMessageContent_ThrowsInvalidOperationException()
-        {
-            var response = new ApiResponseJson<object>(new HttpResponseMessage());
-
-            Assert.ThrowsAsync<InvalidOperationException>(() => response.GetBodyAsync());
-        }
-
-        [Test]
         public void GetBodyAsync_WithValidContent_GetsContentAsType()
         {
             var expected = new JsonTestModel

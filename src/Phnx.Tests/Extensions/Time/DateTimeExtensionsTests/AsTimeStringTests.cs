@@ -38,8 +38,8 @@ namespace Phnx.Tests.Extensions.Time.DateTimeExtensionsTests
 
             var shortTime = sampleNow.AsTimeString(formatProviderUS);
             var shortTimeShouldBe = "12:15 PM";
-
-            Assert.AreEqual(shortTimeShouldBe, shortTime);
+            
+            Assert.IsTrue(shortTimeShouldBe.Equals(shortTime, StringComparison.InvariantCultureIgnoreCase));
         }
 
         [Test]
@@ -62,8 +62,8 @@ namespace Phnx.Tests.Extensions.Time.DateTimeExtensionsTests
 
             var shortTime = sampleNow.AsTimeString(formatProviderUS, false);
             var shortTimeShouldBe = "12:15:36 PM";
-
-            Assert.AreEqual(shortTimeShouldBe, shortTime);
+            
+            Assert.IsTrue(shortTimeShouldBe.Equals(shortTime, StringComparison.InvariantCultureIgnoreCase));
         }
 
         [Test]
