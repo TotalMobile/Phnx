@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Primitives;
 using Moq;
 using NUnit.Framework;
@@ -25,11 +26,11 @@ namespace Phnx.AspNetCore.ETags.Tests.Services
 
             if (ifMatchHeader != null)
             {
-                eTagRequestService.RequestHeaders.Add("If-Match", new StringValues(ifMatchHeader));
+                eTagRequestService.RequestHeaders.Append("If-Match", new StringValues(ifMatchHeader));
             }
             if (ifNoneMatchHeader != null)
             {
-                eTagRequestService.RequestHeaders.Add("If-None-Match", new StringValues(ifNoneMatchHeader));
+                eTagRequestService.RequestHeaders.Append("If-None-Match", new StringValues(ifNoneMatchHeader));
             }
 
             return eTagRequestService;

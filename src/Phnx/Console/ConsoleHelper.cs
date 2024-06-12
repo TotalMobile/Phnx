@@ -52,7 +52,9 @@ namespace Phnx.Console
         /// <exception cref="IOException">An I/O error occurred</exception>
         public string WindowTitle
         {
+#pragma warning disable CA1416
             get => _Console.Title;
+#pragma warning restore CA1416
             set => _Console.Title = value;
         }
 

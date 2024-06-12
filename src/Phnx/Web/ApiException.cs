@@ -33,7 +33,7 @@ namespace Phnx.Web
         /// <summary>
         /// The status code response that the server gave
         /// </summary>
-        public HttpStatusCode StatusCode { get; }
+        public new HttpStatusCode StatusCode { get; }
 
         /// <summary>
         /// The body of the response

@@ -161,7 +161,9 @@ namespace Phnx.Security.Algorithms
 
         private AesGcm CreateAes(byte[] key)
         {
+# pragma warning disable SYSLIB0053
             return new AesGcm(key);
+# pragma warning restore SYSLIB0053
         }
 
         private (bool reachedEnd, byte[] chunk) ReadChunk(Stream input)

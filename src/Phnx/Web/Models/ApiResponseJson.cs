@@ -32,7 +32,7 @@ namespace Phnx.Web.Models
 
             var contentStream = await Message.Content.ReadAsStreamAsync();
 
-            if (contentStream is null || contentStream.Length == 0)
+            if (contentStream is null)
             {
                 throw new InvalidOperationException("Cannot load an empty response body as JSON");
             }
