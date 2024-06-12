@@ -126,7 +126,7 @@ namespace Phnx.AspNetCore.ETags.Services
                 throw new ArgumentNullException(nameof(eTag));
             }
 
-            ResponseHeaders.Add(ETagHeaderKey, eTag);
+            ResponseHeaders.Append(ETagHeaderKey, eTag);
         }
     }
 }

@@ -204,7 +204,7 @@ namespace Phnx.AspNetCore.ETags.Tests.Services
         [Test]
         public void AddETag_WhenETagIsNotNull_AddsETag()
         {
-            string expected = string.Empty;
+            const string expected = "ETag";
             ETagResponseService service = GetService();
 
             service.AddETag(expected);
