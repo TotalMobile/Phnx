@@ -33,16 +33,20 @@ namespace Phnx.Web.Fluent
         /// </summary>
         /// <param name="body">The data to send as body content</param>
         /// <param name="encoding">The text encoding to use</param>
+        /// <param name="options">Json serializer options</param>
         /// <returns>The source <see cref="FluentRequest"/></returns>
         /// <exception cref="ArgumentNullException"><paramref name="encoding"/> is <see langword="null"/></exception>
-        public FluentRequest Json<T>(T body, Encoding encoding)
+        public FluentRequest Json<T>(T body, Encoding encoding, JsonSerializerOptions options = null)
         {
             if (encoding is null)
             {
                 throw new ArgumentNullException(nameof(encoding));
             }
 
-            var bodyAsString = body is null ? string.Empty : JsonSerializer.Serialize(body);
+            var bodyAsString = body is null
+                ? string.Empty
+                : JsonSerializer.Serialize(body, options ?? JsonSerialization.DefaultOptions);
+            
             ToContent(ContentType.Application.Json, bodyAsString, encoding);
 
             return _request;

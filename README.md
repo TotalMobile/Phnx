@@ -1,18 +1,21 @@
-# Phnx
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=phoenix-apps_Phnx&metric=coverage)](https://sonarcloud.io/dashboard?id=phoenix-apps_Phnx)
-[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=phoenix-apps_Phnx&metric=vulnerabilities)](https://sonarcloud.io/dashboard?id=phoenix-apps_Phnx)
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=phoenix-apps_Phnx&metric=security_rating)](https://sonarcloud.io/dashboard?id=phoenix-apps_Phnx)
+# Worksuite.Phnx
 
-Phnx exists to solve common coding problems, giving you a reliable and easy to use library, with none of the effort.
+`Worksuite.Phnx` is forked from [Phnx](https://github.com/phoenix-apps/Phnx).
 
-## Compatibility & Dependencies
+## Build
 
-* `Phnx` is built against the latest stable [.NET Core](https://docs.microsoft.com/en-us/dotnet/)
+```
+dotnet build src/Phnx/Phnx.csproj --configuration Release
+```
 
-* `Phnx.AspNetCore` is built against the latest stable [ASP.NET Core](https://docs.microsoft.com/en-us/aspnet/core/)
+## Pack
 
-## Help & Documentation
-[Click here](https://phoenix-apps.github.io/Phnx-Wiki)
+```
+dotnet pack src/Phnx/Phnx.csproj --configuration Release
+```
 
-## Contributing
-We welcome contributions. Please follow the [Phoenix Standards](https://github.com/phoenix-apps/Standards) when developing on any of our projects.
+## Push
+
+```
+dotnet nuget push --source "https://pkgs.dev.azure.com/totalmobile/_packaging/TotalMobile/nuget/v3/index.json" --api-key az ./src/Phnx/bin/Release/Worksuite.Phnx.1.0.0.7.nupkg --interactive
+```

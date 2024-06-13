@@ -257,7 +257,9 @@ namespace Phnx.Web.Fluent
 
             var response = await _apiRequestService.SendAsync(Request);
 
-            return new ApiResponseJson<TResponse>(response);
+            return response.Content.Headers.ContentLength == 0
+                ? new ApiResponseJson<TResponse>(default)
+                : new ApiResponseJson<TResponse>(response);
         }
 
         /// <summary>

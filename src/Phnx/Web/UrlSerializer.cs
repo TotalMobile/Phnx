@@ -120,19 +120,17 @@ namespace Phnx.Web
         /// Serialize a value for use as a URL or query string parameter
         /// </summary>
         /// <param name="value">The value to serialize</param>
+        /// <param name="options">Json serializer options</param>
         /// <returns><paramref name="value"/> serialized for use as a URL or query string parameter</returns>
-        public static string SerializeForUrl<T>(T value)
-        {
+        public static string SerializeForUrl<T>(T value, JsonSerializerOptions options = null) {
             if (value is null)
             {
                 return string.Empty;
             }
-            else
-            {
-                var serialized = JsonSerializer.Serialize(value).Trim('\"');
 
-                return Uri.EscapeDataString(serialized);
-            }
+            var serialized = JsonSerializer.Serialize(value, options ?? JsonSerialization.DefaultOptions).Trim('\"');
+
+            return Uri.EscapeDataString(serialized);
         }
     }
 }
