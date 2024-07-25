@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using Phnx.Web.Models;
 using System;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -45,6 +46,18 @@ namespace Phnx.Web.Tests.Models
             var response = new ApiResponseJson<JsonTestModel>(new HttpResponseMessage
             {
                 Content = null!
+            });
+
+            Assert.IsNull(await response.GetBodyAsync());
+        }
+        
+        [Test]
+        public async Task GetBodyAsync_WithStatusCodeNoContent_Returns_Null() {
+            string content = null;
+            
+            var response = new ApiResponseJson<JsonTestModel>(new HttpResponseMessage
+            {
+                StatusCode = HttpStatusCode.NoContent
             });
 
             Assert.IsNull(await response.GetBodyAsync());
