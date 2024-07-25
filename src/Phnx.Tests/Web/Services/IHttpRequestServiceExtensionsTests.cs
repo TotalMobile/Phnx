@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using Phnx.Web.Services;
 using System;
+using System.Net;
 using System.Net.Http;
 
 namespace Phnx.Web.Tests.Services
@@ -12,7 +13,7 @@ namespace Phnx.Web.Tests.Services
 
         public IHttpRequestServiceExtensionsTests()
         {
-            Mock = new HttpRequestServiceMock();
+            Mock = new HttpRequestServiceMock(new HttpResponseMessage(HttpStatusCode.OK));
         }
 
         [Test]

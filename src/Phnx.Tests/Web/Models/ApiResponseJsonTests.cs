@@ -3,6 +3,7 @@ using NUnit.Framework;
 using Phnx.Web.Models;
 using System;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Phnx.Web.Tests.Models
 {
@@ -36,6 +37,17 @@ namespace Phnx.Web.Tests.Models
             var result = response.GetBodyAsync().Result;
 
             Assert.AreEqual(expected, result);
+        }
+        
+        [Test]
+        public async Task GetBodyAsync_WithNullContent_Returns_Null()
+        {
+            var response = new ApiResponseJson<JsonTestModel>(new HttpResponseMessage
+            {
+                Content = null!
+            });
+
+            Assert.IsNull(await response.GetBodyAsync());
         }
     }
 }
