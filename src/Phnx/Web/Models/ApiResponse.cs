@@ -50,7 +50,7 @@ namespace Phnx.Web.Models
         /// <returns>The body of <see cref="Message"/> or <see langword="null"/> if <see cref="Message"/> is <see langword="null"/></returns>
         public async Task<string> GetBodyAsStringAsync()
         {
-            if (Message != null && !_bodyHasBeenLoaded && Message.Content != null)
+            if (Message != null && !_bodyHasBeenLoaded && !Message.Content.IsNullOrEmpty())
             {
                 using (HttpContent content = Message.Content)
                 {

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Net.Http;
+using System.Net.Http.Json;
 using System.Text.Json;
 using System.Threading.Tasks;
 
@@ -30,11 +31,9 @@ namespace Phnx.Web.Models
                 throw new InvalidOperationException($"{nameof(Message)} cannot be null");
             }
 
-            await using var contentStream = await Message.Content.ReadAsStreamAsync();
-            var content = await JsonSerializer.DeserializeAsync<T>(contentStream,
-                options ?? JsonSerialization.DefaultOptions);
+            if (Message.Content.IsNullOrEmpty()) return default;
             
-            return content;
+            return await Message.Content.ReadFromJsonAsync<T>(options ?? JsonSerialization.DefaultOptions);
         }
     }
 }
