@@ -4,7 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <WarningsAsErrors>true</WarningsAsErrors>
     <Description>The Phnx framework - services and classes to extend dotnet, and make it easier to use</Description>
-    <Version>1.0.0.9</Version>
+    <Version>1.0.0.10</Version>
     <Copyright>Phoenix Apps Ltd</Copyright>
     <Company>Phoenix Apps Ltd</Company>
     <Authors>Phoenix Apps Ltd</Authors>
