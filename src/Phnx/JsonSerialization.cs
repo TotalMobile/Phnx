@@ -11,6 +11,7 @@ public static class JsonSerialization {
     /// </summary>
     public static readonly JsonSerializerOptions DefaultOptions = new() 
     {
-        PropertyNameCaseInsensitive = true
+        PropertyNameCaseInsensitive = true,
+        Converters = { new InferredTypeJsonConverter() }
     };
 }
